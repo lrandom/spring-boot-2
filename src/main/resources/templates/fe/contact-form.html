@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="${title}"></title>
+</head>
+<body>
+<div class="wrapper">
+    <div th:replace="~{fe/commons/fragments::header}">
+    </div>
+
+    <form th:object="${contactForm}" th:action="@{/contact}" method="post">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" th:field="*{name}">
+        </div>
+
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" th:field="*{email}">
+        </div>
+
+        <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" th:field="*{message}"></textarea>
+        </div>
+
+        <button type="submit">Send</button>
+    </form>
+
+    <footer th:replace="~{fe/commons/fragments::footer}"></footer>
+</div>
+</body>
+</html>
