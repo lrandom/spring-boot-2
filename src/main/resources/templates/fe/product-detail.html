@@ -14,6 +14,7 @@
     </div>
 
     <div>
+        <div th:replace="~{fe/commons/fragments::tagline('Product Page')}"></div>
         <ul th:object="${product}">
             <li th:text="*{id}"></li>
             <li th:text="*{name}"></li>
