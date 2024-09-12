@@ -1,8 +1,11 @@
 package prepedu.com.springbootdemo2.models;
 
-public class Product {
-    public String id;
-    public String name;
-    public float price;
+import lombok.Data;
 
+@Data
+public class Product {
+    private String id;
+    private String name;
+    private float price;
+    private String category;
 }
