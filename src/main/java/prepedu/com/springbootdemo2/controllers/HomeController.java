@@ -29,4 +29,14 @@ public class HomeController {
         model.addAttribute("age", 12);
         return "fe/home";
     }
+
+    @GetMapping("/product-detail")
+    public String productDetail(Model model) {
+        Product product = new Product();
+        product.id = "1";
+        product.name = "Product 1";
+        product.price = 100.0f;
+        model.addAttribute("product", product);
+        return "fe/product-detail";
+    }
 }

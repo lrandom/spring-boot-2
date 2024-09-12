@@ -6,36 +6,19 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title th:text="${title}"></title>
+    <title>${product.name}</title>
 </head>
 <body>
 <div class="wrapper">
-    <div th:replace="~{fe/commons/fragments::header}">
+    <div th:insert="~{fe/commons/fragments::header}">
     </div>
 
     <div>
-        <h1 th:text="${title}"></h1>
         <ul th:object="${product}">
             <li th:text="*{id}"></li>
             <li th:text="*{name}"></li>
             <li th:text="*{price}"></li>
         </ul>
-
-        <ul>
-            <li th:each="language : ${languages}">
-                <span th:text="${language}"></span>
-            </li>
-        </ul>
-
-        <a th:href="@{/products}">Products</a>
-
-        <div th:if="${age > 18}">Bạn đã đủ tuổi</div>
-        <div th:unless="${age > 18}">Bạn chưa đủ tuổi</div>
-
-        <div th:switch="${age}">
-            <div th:case="${12}">Bạn chưa đủ tuổi</div>
-            <div th:case="${18}">Bạn đã đủ tuổi</div>
-        </div>
     </div>
 
     <footer th:replace="~{fe/commons/fragments::footer}">
