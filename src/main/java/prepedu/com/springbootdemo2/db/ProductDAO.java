@@ -17,6 +17,7 @@ public class ProductDAO extends DB {
 
     PreparedStatement preparedStatement;
 
+
     public boolean create(Product product) {
         try {
             connection = getConnect();
@@ -80,5 +81,25 @@ public class ProductDAO extends DB {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public Product find(String id) {
+        Product product = new Product();
+        try {
+            connection = getConnect();
+            preparedStatement = connection.prepareStatement("SELECT * FROM products WHERE id = ?");
+            preparedStatement.setString(1, id);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                product.setId(resultSet.getString("id"));
+                product.setName(resultSet.getString("name"));
+                product.setPrice(resultSet.getFloat("price"));
+                product.setCategory(resultSet.getString("category"));
+            }
+            return product;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return product;
     }
 }
