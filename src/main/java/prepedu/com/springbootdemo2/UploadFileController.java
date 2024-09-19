@@ -1,5 +1,7 @@
 package prepedu.com.springbootdemo2;
 
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.SimpleDateFormat;
@@ -15,7 +18,8 @@ import java.util.Date;
 @Controller("UploadFileController")
 public class UploadFileController {
 
-    String UPLOAD_FOLDER = "/Users/luan_prep_vn/Desktop/spring-uploads/";
+    @Value("${UPLOAD_DIR}")
+    String UPLOAD_FOLDER;
 
     @GetMapping("/upload-form")
     public String uploadForm() {
@@ -45,5 +49,20 @@ public class UploadFileController {
             e.printStackTrace();
         }
         return "fe/upload-form";
+    }
+
+
+    @GetMapping("/serve-file")
+    public FileOutputStream serveFile(HttpServletResponse response) {
+        File file = new File(UPLOAD_FOLDER + "451320821_386657711100395_3929528726125613421_n.jpg");
+        response.setContentType("image/jpeg");
+        response.setHeader("Content-Disposition", "attachment; filename=" + file.getName());
+        try {
+            Files.copy(file.toPath(), response.getOutputStream());
+            response.getOutputStream().flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
