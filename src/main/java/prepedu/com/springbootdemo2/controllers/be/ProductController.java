@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import prepedu.com.springbootdemo2.db.ProductDAO;
 import prepedu.com.springbootdemo2.models.Product;
 
@@ -27,8 +28,13 @@ public class ProductController implements ICrud {
     }
 
     @PostMapping("/create")
-    public String create(Product product) {
-        productDAO.create(product);
+    public String create(Product product, RedirectAttributes redirectAttributes) {
+        Boolean createSuccess = productDAO.create(product);
+        if (createSuccess) {
+            redirectAttributes.addFlashAttribute("messageSuccess", "Product created successfully");
+        }else{
+            redirectAttributes.addFlashAttribute("messageFailed", "Product creation failed");
+        }
         return "redirect:/admin/product/list";
     }
 
