@@ -17,12 +17,12 @@
 <div class="container">
 
     <!--CHECK IF THERE IS A MESSAGE-->
-    <div th:if="${messageSuccess}" class="alert alert-success" role="alert">
+    <div th:if="${messageSuccess}" class="my-alert alert alert-success" role="alert">
         <div th:text="${messageSuccess}"></div>
     </div>
 
 
-    <div th:if="${messageFailed}" class="alert alert-danger" role="alert">
+    <div th:if="${messageFailed}" class="my-alert alert alert-danger" role="alert">
         <div th:text="${messageFailed}"></div>
     </div>
 
@@ -60,5 +60,14 @@
     </table>
 </div>
 
+<script>
+    //web API , LibUV
+    setTimeout(() => {
+        const alerts = document.getElementsByClassName('my-alert');//DOM API
+        for (let i = 0; i < alerts.length; i++) {
+            alerts[i].style.display = 'none';
+        }
+    }, 3000);
+</script>
 </body>
 </html>
