@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<p>
+    Get Session Success <span th:text="${name}"></span>
+</p>
+
+<ul>
+    <li>ID: <span th:text="${user.getId()}"></span></li>
+    <li>Name: <span th:text="${user.getName()}"></span></li>
+</ul>
+</body>
+</html>

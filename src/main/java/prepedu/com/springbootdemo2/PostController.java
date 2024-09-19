@@ -39,7 +39,7 @@ public class PostController {
                 }
             }
         }
-        if(isExist == false) {
+        if (isExist == false) {
             Cookie cookie = new Cookie("post_" + id, "true");
             cookie.setMaxAge(60 * 60 * 24);
 
