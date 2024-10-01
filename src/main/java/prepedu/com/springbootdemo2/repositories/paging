@@ -1,0 +1,13 @@
+total records
+page items =10
+
+total pages = total records / page items
+
+1/2/3/4
+
+page 1: (recent page-1)*page items = 0
+page 2: (recent page-1)*page items = page items = 10
+page 3: (recent page-1)*page items = 2*page items = 20
+page 4: (recent page-1)*page items = 3*page items = 30
+
+SELECT * FROM table LIMIT 0, page items

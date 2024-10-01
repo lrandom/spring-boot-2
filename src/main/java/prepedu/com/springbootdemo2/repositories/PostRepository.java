@@ -8,5 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface PostRepository extends CrudRepository<Post, Long> {
-
 }
+
+
