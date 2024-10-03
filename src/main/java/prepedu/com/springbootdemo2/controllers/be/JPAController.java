@@ -6,18 +6,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import prepedu.com.springbootdemo2.entities.Category;
+import prepedu.com.springbootdemo2.entities.Product;
 import prepedu.com.springbootdemo2.entities.User;
 import prepedu.com.springbootdemo2.entities.UserInfo;
-import prepedu.com.springbootdemo2.repositories.CategoryRepo;
-import prepedu.com.springbootdemo2.repositories.UserInfoRepo;
-import prepedu.com.springbootdemo2.repositories.UserRepo;
+import prepedu.com.springbootdemo2.repositories.*;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/jpa-demo")
+public class JPAController {
     @Autowired
     UserRepo userRepo;
 
@@ -26,6 +24,12 @@ public class UserController {
 
     @Autowired
     CategoryRepo categoryRepo;
+
+    @Autowired
+    ProductRepo productRepo;
+
+    @Autowired
+    TagRepo tagRepo;
 
     @RequestMapping("/get-profile")
     public String login() {
@@ -44,5 +48,17 @@ public class UserController {
         categories.forEach(categoryList::add);
         model.addAttribute("categories", categoryList);
         return "category";
+    }
+
+    @GetMapping("/products")
+    public String products(Model model) {
+        ArrayList<Product> products = new ArrayList<>();
+        productRepo.findAll().forEach(products::add);
+        model.addAttribute("products", products);
+
+        //get all tags
+        model.addAttribute("tags", tagRepo.findAll());
+
+        return "jpa/products";
     }
 }
