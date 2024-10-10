@@ -11,15 +11,18 @@ public class Product {
     @GeneratedValue
     @Id
     Long id;
-
     String name;
+    Double price;
+    Double discount;
+    String description;
 
-    String price;
+    @Column(name = "category_id")
+    Long categoryId;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    Category category;
+    @Column(name = "brand_id")
+    Long brandId;
 
-    @ManyToMany(mappedBy = "products", fetch = FetchType.EAGER)
-    Collection<Tag> tags;
+    @Column(name = "rate_avg")
+    Integer rateAvg;
+
 }

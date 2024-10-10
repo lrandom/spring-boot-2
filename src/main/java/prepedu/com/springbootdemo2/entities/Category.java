@@ -11,10 +11,7 @@ public class Category {
     @Id
     @GeneratedValue
     private Long id;
-
     String name;
-
-    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
-    Collection<Product> products;
+    String description;
 }
 
