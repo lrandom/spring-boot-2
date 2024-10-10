@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>AdminLTE v4 | Dashboard</title><!--begin::Primary Meta Tags-->
@@ -154,7 +157,7 @@
             </div> <!--end::Container-->
         </div> <!--end::App Content Header--> <!--begin::App Content-->
         <div class="app-content"> <!--begin::Container-->
-            <div class="container-fluid"> <!--begin::Row-->
+            <div class="container-fluid" layout:fragment="content"> <!--begin::Row-->
 
             </div> <!--end::Container-->
         </div> <!--end::App Content-->

@@ -11,4 +11,8 @@ public class LayoutController {
     public String index() {
         return "be/layout";
     }
+    @GetMapping("/test")
+    public String testLayout() {
+        return "be/user/index";
+    }
 }
