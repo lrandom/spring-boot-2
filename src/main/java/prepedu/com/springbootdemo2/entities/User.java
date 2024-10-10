@@ -16,6 +16,4 @@ public class User {
     @Column(name = "password")
     String password;
 
-    @OneToOne(mappedBy = "user")
-    UserInfo userInfo;
 }
