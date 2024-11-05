@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{be/layout}">
+
+<section layout:fragment="content">
+    <!-- check if has error -->
+    <div th:if="${success_message}">
+        <div class="alert alert-success" role="alert">
+            <div th:text="${success_message}"></div>
+        </div>
+    </div>
+
+    <div th:if="${error_message}">
+        <div class="alert alert-danger" role="alert">
+            <div th:text="${error_message}"></div>
+        </div>
+    </div>
+
+    <form th:method="POST" enctype="multipart/form-data"> <!--begin::Body-->
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name"
+                       aria-describedby="emailHelp">
+            </div>
+
+            <div>
+                <span>Image</span>
+                <div class="file-input-image-wrapper">
+                </div>
+                <div role="button" class="btn btn-primary btn-add-more-input">Add More Input</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="text" class="form-control" id="price">
+            </div>
+
+            <div class="mb-3">
+                <label for="discount" class="form-label">Discount</label>
+                <input type="text" class="form-control" id="discount">
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea type="text" class="form-control" id="description">
+                </textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select class="form-control" id="category">
+                    <option th:each="{}"></option>
+                </select>
+            </div>
+        </div> <!--end::Body--> <!--begin::Footer-->
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div> <!--end::Footer-->
+    </form>
+
+    <script>
+        const $ = document.querySelector.bind(document);
+        let countFileInput = 0;
+        const MAX_FILE_INPUT = 3;
+        $('.btn-add-more-input').addEventListener('click', function () {
+            if (countFileInput >= MAX_FILE_INPUT) {
+                return;
+            }
+            countFileInput++;
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.name = 'images';
+            input.accept = 'image/*';
+            $('.file-input-image-wrapper').appendChild(input);
+        });
+    </script>
+
+    <style>
+        .btn-add-more-input {
+            cursor: pointer;
+        }
+    </style>
+</section>
+
+</html>

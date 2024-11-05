@@ -13,6 +13,6 @@ public class LayoutController {
     }
     @GetMapping("/test")
     public String testLayout() {
-        return "be/user/index";
+        return "list";
     }
 }

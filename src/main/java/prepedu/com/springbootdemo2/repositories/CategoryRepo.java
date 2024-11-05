@@ -7,7 +7,5 @@ import org.springframework.stereotype.Repository;
 import prepedu.com.springbootdemo2.entities.Category;
 
 @Repository
-public interface CategoryRepo extends PagingAndSortingRepository<Category, Long> {
-    @Query("SELECT COUNT(p) FROM categories p")
-    int getTotalRecords();
+public interface CategoryRepo extends CrudRepository<Category, Long> {
 }

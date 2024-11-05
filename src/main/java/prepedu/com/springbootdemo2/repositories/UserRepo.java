@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import prepedu.com.springbootdemo2.entities.User;
 
 @Repository
-public interface UserRepo extends PagingAndSortingRepository<User, Long> {
+public interface UserRepo extends CrudRepository<User, Long> {
     @Query("SELECT COUNT(p) FROM users p")
     int getTotalRecords();
 }
