@@ -21,7 +21,6 @@
                             </th>
                             <th>Name</th>
                             <th>Price</th>
-                            <th>Description</th>
                             <th style="width: 40px">Action</th>
                         </tr>
                         </thead>
@@ -31,10 +30,16 @@
                                 <div th:text="${item.getId()}"></div>
                             </td>
                             <td>
+                                <div>
+                                    <img th:src="@{${item.getThumbnail()}}"
+                                         style="width: 100px; height: 100px; object-fit: cover">
+                                </div>
+                            </td>
+                            <td>
                                 <div th:text="${item.getName()}"></div>
                             </td>
                             <td>
-                                <div th:text="${item.getDescription()}"></div>
+                                <div th:text="${item.getPrice()}"></div>
                             </td>
                             <td>
                                 <a onclick="return confirm('Are you sure you want to delete?')"

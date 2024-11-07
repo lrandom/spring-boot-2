@@ -36,6 +36,7 @@ public class Product {
         productDTO.categoryId = categoryId;
         productDTO.brandId = brandId;
         productDTO.rateAvg = rateAvg;
+        productDTO.thumbnailPath = images.stream().findFirst().get().getPath();
         return productDTO;
     }
 

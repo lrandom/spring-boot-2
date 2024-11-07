@@ -16,6 +16,7 @@ public class ProductDTO {
     public Long categoryId;
     public Long brandId;
     public Integer rateAvg;
+    public String thumbnailPath;
 
     public Product mapToProduct() {
         Product product = new Product();
@@ -30,7 +31,7 @@ public class ProductDTO {
         return product;
     }
 
-    public String getBaseImagePath() {
-        return "/images/"+
+    public String getThumbnail() {
+        return "/uploads/" + thumbnailPath;
     }
 }

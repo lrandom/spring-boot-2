@@ -58,6 +58,7 @@ public class ProductController implements ICrudForProduct<ProductDTO> {
     }
 
     @Override
+    @GetMapping("/list")
     public String list(Model model) {
         productService.list(model);
         return "be/product/list";
