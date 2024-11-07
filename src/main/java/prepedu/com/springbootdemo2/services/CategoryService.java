@@ -7,6 +7,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import prepedu.com.springbootdemo2.dto.CategoryDTO;
 import prepedu.com.springbootdemo2.repositories.CategoryRepo;
 
+import java.util.ArrayList;
+
 @Service
 public class CategoryService {
     @Autowired
@@ -22,9 +24,13 @@ public class CategoryService {
     }
 
     public void list(Model model) {
+        //convert categoryRepo.findAll() to stream
+
+        ArrayList<CategoryDTO> categoryDTOS = new ArrayList<>();
         categoryRepo.findAll().forEach(category -> {
-            model.addAttribute("list", category.mapToDTO());
+            categoryDTOS.add(category.mapToDTO());
         });
+        model.addAttribute("list", categoryDTOS);
     }
 
     public void getOne(Long id, Model model) {

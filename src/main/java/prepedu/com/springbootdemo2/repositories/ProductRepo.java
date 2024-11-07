@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import prepedu.com.springbootdemo2.entities.Product;
 
 @Repository
-public interface ProductRepo extends PagingAndSortingRepository<Product, Long> {
+public interface ProductRepo extends CrudRepository<Product, Long> {
     @Query("SELECT COUNT(p) FROM products p")
     int getTotalRecords();
 }

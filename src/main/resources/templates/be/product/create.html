@@ -17,41 +17,44 @@
         </div>
     </div>
 
-    <form th:method="POST" enctype="multipart/form-data"> <!--begin::Body-->
+    <form th:method="POST"
+          th:object="${dto}"
+          enctype="multipart/form-data"> <!--begin::Body-->
         <div class="card-body">
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name"
+                <input th:field="*{name}" type="text" class="form-control" id="name"
                        aria-describedby="emailHelp">
             </div>
 
-            <div>
+            <div class="mb-3">
                 <span>Image</span>
                 <div class="file-input-image-wrapper">
                 </div>
-                <div role="button" class="btn btn-primary btn-add-more-input">Add More Input</div>
+                <div role="button" class="btn btn-primary btn-add-more-input">Add More File Upload Input</div>
             </div>
 
             <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
-                <input type="text" class="form-control" id="price">
+                <input type="text" class="form-control" th:field="*{price}" id="price">
             </div>
 
             <div class="mb-3">
                 <label for="discount" class="form-label">Discount</label>
-                <input type="text" class="form-control" id="discount">
+                <input type="text" class="form-control" th:field="*{discount}" id="discount">
             </div>
 
             <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
+                <label for="description" class="form-label" th:field="*{description}">Description</label>
                 <textarea type="text" class="form-control" id="description">
                 </textarea>
             </div>
 
             <div class="mb-3">
                 <label for="category" class="form-label">Category</label>
-                <select class="form-control" id="category">
-                    <option th:each="{}"></option>
+                <select class="form-control" id="category" th:field="*{categoryId}">
+                    <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}">
+                    </option>
                 </select>
             </div>
         </div> <!--end::Body--> <!--begin::Footer-->
