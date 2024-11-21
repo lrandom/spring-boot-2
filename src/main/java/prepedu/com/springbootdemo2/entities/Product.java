@@ -26,6 +26,9 @@ public class Product {
     @Column(name = "rate_avg")
     Integer rateAvg;
 
+    @Column(name = "sold_counter")
+    Long soldCounter;
+
     public ProductDTO mapToDTO() {
         ProductDTO productDTO = new ProductDTO();
         productDTO.id = id;

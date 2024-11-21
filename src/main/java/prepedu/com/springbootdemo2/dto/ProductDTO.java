@@ -17,6 +17,7 @@ public class ProductDTO {
     public Long brandId;
     public Integer rateAvg;
     public String thumbnailPath;
+    public Long soldCounter;
 
     public Product mapToProduct() {
         Product product = new Product();
@@ -28,6 +29,7 @@ public class ProductDTO {
         product.setCategoryId(categoryId);
         product.setBrandId(brandId);
         product.setRateAvg(rateAvg);
+        product.setSoldCounter(soldCounter);
         return product;
     }
 
