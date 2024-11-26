@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="container mx-auto">
+    <nav class="flex items-center justify-between py-4 px-2 shadow bg-gray-800 text-white">
+        <ul class="flex items-center space-x-2">
+            <li><a href="/fe/home">Home</a></li>
+            <li><a href="/fe/about">Category</a></li>
+        </ul>
+
+        <div>
+            <a th:href="@{/cart}">Cart</a>
+            <a class="cursor-pointer inline-block p-2 bg-white rounded-md text-gray-800">
+                Login
+            </a>
+        </div>
+    </nav>
+
+    <div style="min-height: 100vh;width: 100%">
+        <h5 class="text-gray-800 text-xl mt-3 uppercase">Checkout</h5>
+        <div class="w-1/3 mx-auto">
+            <form class="order-form">
+                <label>
+                    <span>Full Name</span>
+                    <input type="text" name="fullName" class="border w-full">
+                </label>
+
+                <label>
+                    <span>Phone</span>
+                    <input type="text" name="fullName" class="border w-full">
+                </label>
+
+                <label>
+                    <span>Address</span>
+                    <input type="text" name="address" class="border w-full">
+                </label>
+
+                <label>
+                    <span>Note</span>
+                    <textarea placeholder="Input your extra message" class="border w-full"></textarea>
+                </label>
+
+                <button class="cursor-pointer inline-block p-2 bg-white rounded-md border text-gray-800">Checkout
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+    <footer class="text-center bg-gray-800 text-white">
+        Copyright@2024
+    </footer>
+</div>
+</body>
+</html>

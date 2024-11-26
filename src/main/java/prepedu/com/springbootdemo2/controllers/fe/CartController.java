@@ -10,4 +10,10 @@ public class CartController {
     public String cart() {
         return "fe/cart/index";
     }
+
+
+    @RequestMapping("/checkout")
+    public String checkout() {
+        return "fe/cart/checkout";
+    }
 }
