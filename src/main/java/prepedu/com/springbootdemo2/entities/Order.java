@@ -8,7 +8,7 @@ import lombok.Data;
 import prepedu.com.springbootdemo2.dto.OrderDTO;
 
 @Data
-@Entity
+@Entity(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(generator = "increment")
@@ -32,6 +32,12 @@ public class Order {
     @Column(name = "status")
     Integer status;
 
+    @Column(name = "total")
+    Float total;
+
+    @Column(name = "full_name")
+    String fullName;
+
     //map to dto
     public OrderDTO mapToDTO() {
         OrderDTO orderDTO = new OrderDTO();
@@ -42,6 +48,8 @@ public class Order {
         orderDTO.setPhone(phone);
         orderDTO.setAddress(address);
         orderDTO.setStatus(status);
+        orderDTO.setTotal(total);
+        orderDTO.setFullName(fullName);
         return orderDTO;
     }
 }

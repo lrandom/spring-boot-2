@@ -11,18 +11,21 @@ public class OrderDTO {
     Float tax;
     String phone;
     String address;
-    Integer status;
+    Integer status = 1;
+    String fullName;
+    Float total;
 
     //to entities
     public Order mapToOrder() {
         Order order = new Order();
-        order.setId(id);
         order.setSubTotal(subTotal);
         order.setShippingFee(shippingFee);
         order.setTax(tax);
         order.setPhone(phone);
         order.setAddress(address);
         order.setStatus(status);
+        order.setTotal(total);
+        order.setFullName(fullName);
         return order;
     }
 }

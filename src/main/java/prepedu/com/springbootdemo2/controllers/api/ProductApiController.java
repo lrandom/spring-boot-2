@@ -20,4 +20,6 @@ public class ProductApiController {
         return productRepo.findById(id).map(Product::mapToDTO).orElse(null);
     }
 
+
+
 }

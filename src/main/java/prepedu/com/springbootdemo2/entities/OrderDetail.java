@@ -1,14 +1,12 @@
 package prepedu.com.springbootdemo2.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import prepedu.com.springbootdemo2.dto.OrderDetailDTO;
 
 @Entity
 @Data
+@Table(name = "order_details")
 public class OrderDetail {
     @Id
     @GeneratedValue(generator = "increment")
