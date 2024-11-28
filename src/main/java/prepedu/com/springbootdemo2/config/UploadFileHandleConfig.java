@@ -1,4 +1,4 @@
-package prepedu.com.springbootdemo2;
+package prepedu.com.springbootdemo2.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

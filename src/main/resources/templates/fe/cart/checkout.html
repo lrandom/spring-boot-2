@@ -76,6 +76,23 @@
         const nodeAddress = document.querySelector('.order-form input[name="address"]');
         const nodeNote = document.querySelector('.order-form textarea[name="note"]');
 
+        function getCookie(cookieName) {
+            let cookies = document.cookie;
+            let cookieArray = cookies.split("; ");
+
+            for (let i = 0; i < cookieArray.length; i++) {
+                let cookie = cookieArray[i];
+                let [name, value] = cookie.split("=");
+
+                if (name === cookieName) {
+                    return decodeURIComponent(value);
+                }
+            }
+
+            return null;
+        }
+
+
         const payload = {
             "orderInfo": {
                 "fullName": nodeFullName.value,
@@ -95,10 +112,14 @@
             ]
         }
 
+        //reading cookie to get token
+
+
         fetch('/api/checkout', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + getCookie('token')
             },
             body: JSON.stringify(payload)
         }).then(response => {

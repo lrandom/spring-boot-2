@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import prepedu.com.springbootdemo2.dto.UserDTO;
 
+import java.util.Collection;
+
 @Entity(name = "users")
 @Data
 public class User {
@@ -47,4 +49,12 @@ public class User {
         }
         return dto;
     }
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    Collection<Role> roles;
 }
